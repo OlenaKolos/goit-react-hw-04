@@ -10,7 +10,7 @@ const SearchBar = ({ onSearch }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (query.trim() === "") {
+    if (!query || query.trim() === "") {
       toast.error("Please enter search term!", { position: "top right" });
       return;
     }
@@ -20,7 +20,7 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleUserInput = (evt) => {
-    const inputValue = evt.target.value.trim();
+    const inputValue = evt.target.value;
     setQuery(inputValue);
     searchBtn.current.disabled = inputValue === "" ? true : false;
   };
