@@ -1,27 +1,28 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import PropTypes from "prop-types";
 import { FaSearch } from "react-icons/fa";
 import css from "./SearchBar.module.css";
 
 const SearchBar = ({ onSearch }) => {
+  const [query, setQuery] = useState("");
   const searchBtn = useRef();
-
-  const handleUserInput = (evt) => {
-    const inputValue = evt.target.value.trim();
-    searchBtn.current.disabled = inputValue === "" ? true : false;
-  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const form = evt.target;
-    const query = form.elements.query.value;
-    if (query === "") {
+    if (query.trim() === "") {
       toast.error("Please enter search term!", { position: "top right" });
       return;
     }
     onSearch(query);
-    form.reset();
+    setQuery("");
+    searchBtn.current.disabled = true;
+  };
+
+  const handleUserInput = (evt) => {
+    const inputValue = evt.target.value.trim();
+    setQuery(inputValue);
+    searchBtn.current.disabled = inputValue === "" ? true : false;
   };
 
   return (
@@ -34,13 +35,14 @@ const SearchBar = ({ onSearch }) => {
           autoFocus
           placeholder="Search images and photos"
           name="query"
+          value={query}
           onChange={handleUserInput}
         />
         <button
           className={css.searchBtn}
           ref={searchBtn}
           type="submit"
-          disabled
+          disabled={!query}
         >
           <FaSearch />
         </button>

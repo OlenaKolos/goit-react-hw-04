@@ -3,7 +3,6 @@ import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
 
 const ImageGallery = ({ images, handleImageClick }) => {
-  // console.log(images);
   return (
     <ul className={css.gallery}>
       {images.map((image) => {

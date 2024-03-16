@@ -9,9 +9,15 @@ const ImageCard = ({ image, handleImageClick }) => {
     imgAuthor: image.user.name,
     imgLikes: image.likes,
   };
+
   return (
-    <div className={css.imageBlock} onClick={() => handleImageClick(imgData)}>
-      <img src={image.urls.small} alt={image.alt_description} width="400" />
+    <div className={css.imageBlock}>
+      <img
+        src={image.urls.small}
+        alt={image.alt_description}
+        width="400"
+        onClick={() => handleImageClick(imgData)}
+      />
     </div>
   );
 };
