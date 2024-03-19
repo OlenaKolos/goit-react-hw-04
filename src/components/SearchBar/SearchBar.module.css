@@ -18,7 +18,7 @@
     outline: none;
     border-radius: 5px;
     font-size: 16px;
-    background: #fff;
+    background: #DDDDDD;
 }
 
 .searchInput:hover,
@@ -33,13 +33,13 @@
     font-size: 16px;
     position: absolute;
     top: 1px;
-    right: 1px;
+    right: 2px;
     padding: 9px;
     border: none;
     outline: none;
     cursor: pointer;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #DDDDDD;
     color: #000;
     transition: all 0.25s ease-in-out;
 }
